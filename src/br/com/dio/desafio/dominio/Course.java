@@ -1,25 +1,17 @@
 package br.com.dio.desafio.dominio;
 
-public class Course {
+public final class Course extends Content {
 
-    private String title;
-    private String description;
     private int courseLoad;
 
-    public String getTitle() {
-        return title;
+    public Course(String title, String description, int courseLoad) {
+        super(title,description);
+        this.courseLoad = courseLoad;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    @Override
+    public double getXp() {
+        return DEFAULT_XP * courseLoad;
     }
 
     public int getCourseLoad() {
@@ -33,8 +25,8 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 ", courseLoad=" + courseLoad +
                 '}';
     }
